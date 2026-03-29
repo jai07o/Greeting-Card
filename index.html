@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhavya 💍🌹</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root {
+  --gold:#ffd700;
+  --gold2:#c8a400;
+  --gold3:#fffacd;
+  --rose:#ff4d88;
+  --purple:#9b4dca;
+}
+
+body {
+  background:#000;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  overflow:hidden;
+}
+
+/* ===== GLOBAL ALWAYS-FALLING PETALS ===== */
+.global-petals{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.gp{position:absolute;top:-6%;animation:gpFall var(--gpd,12s) linear infinite var(--gps,0s);}
+@keyframes gpFall{
+  0%{transform:translateX(0) translateY(0) rotate(0deg);opacity:0;}
+  8%{opacity:0.75;}
+  85%{opacity:0.5;}
+  100%{transform:translateX(var(--gpx,40px)) translateY(108vh) rotate(var(--gpr,540deg));opacity:0;}
+}
+
+/* ===== TWINKLING STAR FIELD ===== */
+.starfield{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.sf{position:absolute;border-radius:50%;background:#fff;animation:sfTw var(--sfd,3s) ease-in-out infinite var(--sfdl,0s);}
+@keyframes sfTw{0%,100%{opacity:0.08;}50%{opacity:0.9;}}
+
+/* ===== STAGE / SCROLL CONTAINER ===== */
+.scroll-wrap{
+  position:relative;z-index:10;
+  width:min(700px,98vw);
+  max-height:97vh;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+.scroll-wrap::-webkit-scrollbar{display:none;}
+
+/* ===== SECTION BASE ===== */
+.section{
+  min-height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:40px 28px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===== GOLD BORDER WRAPPER (card look) ===== */
+.gold-card{
+  background:linear-gradient(160deg,#0e0018 0%,#160028 40%,#0a0012 100%);
+  border:1px solid transparent;
+  border-radius:2px;
+  width:100%;
+  position:relative;
+  padding:clamp(36px,6vw,64px) clamp(28px,5vw,60px);
+  box-shadow:0 0 80px rgba(212,175,55,0.1),0 0 200px rgba(140,0,80,0.12);
+}
+.gold-card::before{
+  content:'';
+  position:absolute;inset:0;
+  border-radius:2px;
+  padding:1px;
+  background:linear-gradient(135deg,#b8860b,#ffd700,#daa520,#ffd700,#b8860b);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:destination-out;mask-composite:exclude;
+  pointer-events:none;
+}
+/* Inner thin border */
+.gold-card::after{
+  content:'';
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(212,175,55,0.12);
+  border-radius:1px;
+  pointer-events:none;
+}
+
+/* ===== CORNER ORNAMENTS ===== */
+.orn{position:absolute;color:rgba(212,175,55,0.35);font-size:clamp(14px,2.5vw,22px);line-height:1;z-index:2;}
+.orn-tl{top:16px;left:16px;} .orn-tr{top:16px;right:16px;}
+.orn-bl{bottom:16px;left:16px;} .orn-br{bottom:16px;right:16px;}
+
+/* ===== GLOW ORBS ===== */
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+
+/* ===== SECTION 0: COVER ===== */
+#sec0{background:radial-gradient(ellipse at 50% 30%,#180030 0%,#0a0015 60%,#000 100%);}
+.cover-content{text-align:center;position:relative;z-index:5;}
+.cover-eyebrow{
+  font-size:clamp(9px,1.4vw,11px);letter-spacing:7px;text-transform:uppercase;
+  color:rgba(212,175,55,0.55);margin-bottom:clamp(18px,3vw,28px);
+  animation:fadeUp 1.2s ease 0.2s both;
+}
+.cover-tagline{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(14px,2.5vw,22px);color:rgba(220,185,255,0.7);
+  margin-bottom:clamp(10px,2vw,16px);
+  animation:fadeUp 1.2s ease 0.35s both;
+}
+.cover-name{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(64px,14vw,120px);line-height:1;
+  background:linear-gradient(135deg,#c8a400,#ffd700,#fffacd,#ffd700,#c8a400);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(212,175,55,0.6));
+  animation:fadeUp 1.2s ease 0.5s both,nameShimmer 4s ease-in-out 2s infinite;
+}
+@keyframes nameShimmer{0%,100%{filter:drop-shadow(0 0 25px rgba(212,175,55,0.5));}50%{filter:drop-shadow(0 0 50px rgba(255,215,0,0.9));}}
+.cover-date{
+  font-size:clamp(9px,1.4vw,11px);letter-spacing:5px;text-transform:uppercase;
+  color:rgba(212,175,55,0.4);margin-top:clamp(10px,2vw,18px);
+  animation:fadeUp 1.2s ease 0.7s both;
+}
+.cover-hearts{
+  display:flex;justify-content:center;gap:10px;margin-top:clamp(14px,2.5vw,24px);
+  animation:fadeUp 1.2s ease 0.85s both;
+}
+.ch{font-size:clamp(18px,3.5vw,28px);animation:heartPulse 2.2s ease-in-out infinite var(--cd,0s);}
+@keyframes heartPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+.scroll-hint{
+  margin-top:clamp(28px,5vw,48px);
+  font-size:clamp(9px,1.4vw,11px);letter-spacing:4px;text-transform:uppercase;
+  color:rgba(212,175,55,0.35);animation:fadeUp 1.2s ease 1s both,bounce 2s ease-in-out 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* ===== SECTION 1: BIRTHDAY POEM ===== */
+#sec1{background:radial-gradient(ellipse at 50% 50%,#12001e 0%,#0a0016 60%,#000 100%);}
+.poem-content{text-align:center;position:relative;z-index:5;}
+.sec-label{
+  font-size:clamp(9px,1.4vw,11px);letter-spacing:6px;text-transform:uppercase;
+  color:rgba(212,175,55,0.45);margin-bottom:clamp(20px,3.5vw,32px);
+}
+.gold-divider{display:flex;align-items:center;gap:14px;justify-content:center;margin:clamp(16px,3vw,26px) auto;}
+.gd-line{flex:1;max-width:100px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.4));}
+.gd-line.r{background:linear-gradient(90deg,rgba(212,175,55,0.4),transparent);}
+.gd-gem{color:#daa520;font-size:clamp(13px,2vw,18px);}
+.poem-main{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(22px,4.5vw,42px);color:#fff;line-height:1.2;
+  text-shadow:0 0 50px rgba(212,175,55,0.25);margin-bottom:clamp(12px,2.5vw,20px);
+}
+.poem-main em{
+  background:linear-gradient(135deg,#c8a400,#ffd700,#fffacd,#ffd700);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.poem-body{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(15px,2.5vw,20px);color:rgba(230,210,255,0.82);line-height:2.1;
+  max-width:440px;margin:0 auto;
+}
+.poem-body strong{font-style:normal;font-weight:500;color:rgba(255,215,0,0.9);}
+.quote-block{
+  border-left:1px solid rgba(212,175,55,0.25);
+  padding-left:clamp(14px,2.5vw,22px);
+  margin:clamp(24px,4vw,36px) auto;
+  max-width:400px;text-align:left;
+}
+.qt{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(14px,2.2vw,18px);color:rgba(215,195,255,0.72);line-height:1.85;
+}
+.qa{font-size:clamp(9px,1.4vw,11px);letter-spacing:3px;color:rgba(212,175,55,0.45);margin-top:8px;text-transform:uppercase;}
+
+/* ===== SECTION 2: ROSE GARDEN ===== */
+#sec2{background:radial-gradient(ellipse at 50% 80%,#200010 0%,#0e0008 60%,#000 100%);padding-bottom:60px;}
+.garden-glow{position:absolute;bottom:0;left:0;right:0;height:45%;background:radial-gradient(ellipse at 50% 100%,rgba(180,20,60,0.2) 0%,transparent 70%);pointer-events:none;}
+.rose-arch{position:absolute;bottom:10%;left:0;right:0;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2vw,20px);padding:0 10px;z-index:2;}
+.ra{font-size:var(--raf,36px);animation:roseSway var(--rasd,4s) ease-in-out infinite var(--rasdl,0s);transform-origin:bottom center;}
+@keyframes roseSway{0%,100%{transform:rotate(-5deg) translateY(0);}50%{transform:rotate(5deg) translateY(-12px);}}
+.garden-content{position:relative;z-index:5;text-align:center;margin-bottom:clamp(80px,16vw,140px);}
+.garden-title{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(20px,4vw,38px);color:#fff;line-height:1.35;
+  text-shadow:0 0 40px rgba(200,50,80,0.35);margin-bottom:clamp(10px,2vw,16px);
+}
+.garden-title em{color:rgba(255,180,180,0.9);}
+.garden-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(13px,2.2vw,19px);color:rgba(220,175,195,0.72);
+}
+
+/* ===== SECTION 3: LOVE LETTER ===== */
+#sec3{background:radial-gradient(ellipse at 50% 40%,#0d001f 0%,#070012 60%,#000 100%);}
+.letter-content{text-align:center;position:relative;z-index:5;max-width:500px;}
+.letter-ornament{font-size:clamp(24px,5vw,42px);margin-bottom:clamp(12px,2.5vw,20px);animation:heartPulse 2.5s ease-in-out infinite;}
+.letter-text{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(15px,2.5vw,20px);color:rgba(230,210,255,0.85);line-height:2.05;
+}
+.letter-text strong{font-style:normal;font-weight:500;color:rgba(255,215,0,0.9);}
+.letter-close{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(16px,3vw,26px);color:rgba(220,200,255,0.7);
+  margin-top:clamp(20px,3.5vw,32px);line-height:1.5;
+}
+.letter-close em{color:#ffd700;}
+
+/* ===== SECTION 4: PROPOSAL 💍 ===== */
+#sec4{background:radial-gradient(ellipse at 50% 35%,#0f0025 0%,#060010 60%,#000 100%);}
+.proposal-wrap{text-align:center;position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,3vw,28px);}
+
+.ring-container{position:relative;display:inline-block;}
+.ring-aura{
+  position:absolute;inset:-40px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,0.4) 0%,transparent 70%);
+  animation:auraPulse 2.5s ease-in-out infinite;
+}
+@keyframes auraPulse{0%,100%{transform:scale(1);opacity:0.6;}50%{transform:scale(1.4);opacity:1;}}
+.ring-icon{font-size:clamp(60px,12vw,100px);filter:drop-shadow(0 0 25px rgba(212,175,55,0.8));animation:ringFloat 3.5s ease-in-out infinite;}
+@keyframes ringFloat{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-16px) rotate(4deg);}}
+.ring-sparks{position:absolute;inset:-50px;pointer-events:none;}
+.rsk{position:absolute;animation:rskOut var(--rst,2s) ease-in-out infinite var(--rsd,0s);}
+@keyframes rskOut{0%{opacity:0;transform:translate(0,0) scale(0);}50%{opacity:1;transform:translate(var(--rsx),var(--rsy)) scale(1);}100%{opacity:0;transform:translate(var(--rsx2),var(--rsy2)) scale(0.4);}}
+
+.proposal-line1{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(14px,2.5vw,21px);color:rgba(220,195,255,0.78);
+  letter-spacing:1px;
+}
+.proposal-main{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(24px,5vw,48px);color:#fff;line-height:1.15;
+  text-shadow:0 0 70px rgba(212,175,55,0.45);
+}
+.proposal-main em{
+  background:linear-gradient(135deg,#c8a400,#ffd700,#fffacd,#ffd700);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.say-yes{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(48px,10vw,88px);line-height:1;
+  background:linear-gradient(135deg,#c8a400,#ffd700,#fffacd,#ffd700,#c8a400);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(212,175,55,0.7));
+  animation:nameShimmer 3s ease-in-out 1s infinite;
+}
+.proposal-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(14px,2.5vw,20px);color:rgba(220,190,255,0.8);
+}
+
+/* ===== SECTION 5: FINALE ===== */
+#sec5{background:radial-gradient(ellipse at 50% 50%,#140022 0%,#080012 60%,#000 100%);}
+.finale-hearts-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.fhb{position:absolute;animation:fhbRise var(--fhbd,5s) ease-out infinite var(--fhbs,0s);font-size:var(--fhbsz,20px);}
+@keyframes fhbRise{0%{transform:translateY(0) scale(0.5) translateX(0);opacity:0;}20%{opacity:0.9;}70%{opacity:0.6;}100%{transform:translateY(var(--fhby,-200px)) scale(1.3) translateX(var(--fhbx,20px));opacity:0;}}
+
+.finale-content{text-align:center;position:relative;z-index:5;}
+.finale-label{font-size:clamp(9px,1.4vw,11px);letter-spacing:7px;text-transform:uppercase;color:rgba(212,175,55,0.45);margin-bottom:clamp(12px,2.5vw,20px);}
+.finale-wish{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(16px,3vw,26px);color:rgba(215,195,255,0.72);margin-bottom:clamp(6px,1.5vw,12px);
+}
+.finale-name{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(70px,14vw,128px);line-height:1;
+  background:linear-gradient(135deg,#c8a400,#ffd700,#fffacd,#ffd700,#c8a400);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 35px rgba(212,175,55,0.7));
+  animation:nameShimmer 3s ease-in-out infinite;
+}
+.finale-forever{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(15px,2.5vw,22px);color:rgba(225,195,255,0.8);
+  margin-top:clamp(10px,2vw,18px);line-height:1.7;
+}
+.finale-icons{font-size:clamp(24px,5vw,42px);margin-top:clamp(16px,3vw,26px);animation:heartPulse 1.8s ease-in-out infinite;}
+.sign-block{margin-top:clamp(28px,5vw,44px);}
+.sign-from{font-size:clamp(9px,1.4vw,11px);letter-spacing:4px;text-transform:uppercase;color:rgba(212,175,55,0.35);margin-bottom:8px;}
+.sign-name{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(28px,5.5vw,48px);
+  color:rgba(255,215,0,0.65);
+}
+.seal{
+  margin-top:clamp(20px,4vw,36px);
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(212,175,55,0.18);border-radius:50px;
+  padding:clamp(6px,1vw,9px) clamp(18px,3vw,32px);
+}
+.seal-txt{font-size:clamp(9px,1.4vw,11px);letter-spacing:5px;text-transform:uppercase;color:rgba(212,175,55,0.4);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== NAV DOTS ===== */
+.nav-dots{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  z-index:100;display:flex;flex-direction:column;gap:10px;
+}
+.nd{width:7px;height:7px;border-radius:50%;background:rgba(212,175,55,0.2);cursor:pointer;transition:all 0.3s;border:none;padding:0;}
+.nd.on{background:#daa520;transform:scale(1.4);}
+
+/* ===== SECTION TRANSITIONS (Intersection Observer) ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s ease, transform 0.9s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- Always-on global petals -->
+<div class="global-petals" id="gPetals"></div>
+<!-- Star field -->
+<div class="starfield" id="starField"></div>
+
+<!-- NAV DOTS -->
+<div class="nav-dots" id="navDots"></div>
+
+<!-- ============ SECTION 0: COVER ============ -->
+<div class="scroll-wrap" id="scrollWrap">
+
+<div class="section" id="sec0">
+  <div class="orb" style="width:350px;height:350px;background:rgba(160,0,120,0.12);top:-80px;right:-80px;"></div>
+  <div class="orb" style="width:250px;height:250px;background:rgba(212,175,55,0.06);bottom:-60px;left:-60px;"></div>
+  <div class="cover-content reveal">
+    <div class="cover-eyebrow">A Letter from the Heart · April 11, 2025</div>
+    <div class="cover-tagline">To the most beautiful soul in my world —</div>
+    <div class="cover-name">Bhavya</div>
+    <div class="cover-date">✦ &nbsp; Happy Birthday &nbsp; ✦</div>
+    <div class="cover-hearts">
+      <span class="ch" style="--cd:0s;">🌹</span>
+      <span class="ch" style="--cd:0.3s;">💖</span>
+      <span class="ch" style="--cd:0.6s;">💍</span>
+      <span class="ch" style="--cd:0.9s;">💖</span>
+      <span class="ch" style="--cd:1.2s;">🌹</span>
+    </div>
+    <div class="scroll-hint">✦ &nbsp; Scroll to begin &nbsp; ✦</div>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: BIRTHDAY POEM ============ -->
+<div class="section" id="sec1">
+  <div class="orb" style="width:300px;height:300px;background:rgba(100,0,160,0.1);top:-60px;left:-60px;"></div>
+  <div class="gold-card">
+    <div class="orn orn-tl">❧</div><div class="orn orn-tr">❧</div>
+    <div class="orn orn-bl">❧</div><div class="orn orn-br">❧</div>
+    <div class="poem-content reveal">
+      <div class="sec-label">A Birthday Celebration</div>
+      <div class="poem-main">Happy Birthday,<br><em>My Bhavya</em></div>
+      <div class="gold-divider">
+        <div class="gd-line"></div><span class="gd-gem">🌹</span><span class="gd-gem" style="font-size:12px;">✦</span><span class="gd-gem">🌹</span><div class="gd-line r"></div>
+      </div>
+      <div class="poem-body">
+        In the quiet of the universe,<br>
+        among a million stars,<br>
+        <strong>you are the one that shines<br>brightest in my sky.</strong><br><br>
+        Today, all of heaven celebrates<br>
+        the day you came into this world —<br>
+        and into <em>my life.</em>
+      </div>
+      <div class="quote-block" style="margin-top:clamp(22px,4vw,36px);">
+        <div class="qt">"She is clothed in strength and elegance, and she carries the grace of a thousand roses."</div>
+        <div class="qa">— Written for Bhavya</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 2: ROSE GARDEN ============ -->
+<div class="section" id="sec2">
+  <div class="garden-glow"></div>
+  <div class="garden-content reveal">
+    <div class="sec-label" style="color:rgba(212,175,55,0.45);">The Garden of My Heart</div>
+    <div class="garden-title">
+      Like a rose that blooms only once<br>
+      in a thousand springs —<br>
+      <em>you are that rare, beautiful thing.</em>
+    </div>
+    <div class="gold-divider" style="margin:clamp(14px,2.5vw,22px) auto;">
+      <div class="gd-line"></div><span class="gd-gem" style="font-size:12px;">✦</span><div class="gd-line r"></div>
+    </div>
+    <div class="garden-sub">Every petal that falls tonight falls only for you</div>
+  </div>
+  <div class="rose-arch" id="roseArch"></div>
+</div>
+
+<!-- ============ SECTION 3: LOVE LETTER ============ -->
+<div class="section" id="sec3">
+  <div class="orb" style="width:280px;height:280px;background:rgba(130,0,180,0.1);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="gold-card">
+    <div class="orn orn-tl">❧</div><div class="orn orn-tr">❧</div>
+    <div class="orn orn-bl">❧</div><div class="orn orn-br">❧</div>
+    <div class="letter-content reveal" style="margin:0 auto;">
+      <div class="letter-ornament">🌹</div>
+      <div class="letter-text">
+        From the moment I saw you,<br>
+        <strong>I knew the universe had conspired<br>to bring us together.</strong><br><br>
+        You are the poem I never knew<br>
+        how to write — the song I always<br>
+        heard in my heart but could never sing.<br><br>
+        Every day beside you feels like<br>
+        <strong>the most beautiful day of my life.</strong>
+      </div>
+      <div class="gold-divider" style="margin:clamp(18px,3.5vw,30px) auto;">
+        <div class="gd-line"></div><span class="gd-gem" style="font-size:11px;">✦</span><div class="gd-line r"></div>
+      </div>
+      <div class="letter-close">
+        And today, on your birthday,<br>
+        <em>I want to ask you something…</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 4: PROPOSAL 💍 ============ -->
+<div class="section" id="sec4">
+  <div class="orb" style="width:400px;height:400px;background:rgba(212,175,55,0.06);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="proposal-wrap reveal">
+    <div class="proposal-line1">Bhavya, on this birthday I want you to know —</div>
+    <div class="ring-container">
+      <div class="ring-aura"></div>
+      <div class="ring-sparks" id="ringSparkles"></div>
+      <div class="ring-icon">💍</div>
+    </div>
+    <div class="proposal-main">
+      Will you be<br><em>mine forever?</em>
+    </div>
+    <div class="say-yes">Say Yes 🌹</div>
+    <div class="proposal-sub">I choose you — today, tomorrow, and always.</div>
+  </div>
+</div>
+
+<!-- ============ SECTION 5: FINALE ============ -->
+<div class="section" id="sec5">
+  <div class="finale-hearts-bg" id="finaleHearts"></div>
+  <div class="finale-content reveal">
+    <div class="finale-label">With All My Love</div>
+    <div class="finale-wish">Wishing the happiest birthday to</div>
+    <div class="finale-name">Bhavya</div>
+    <div class="finale-forever">
+      My heart is yours.<br>
+      Forever &amp; always. 🌹
+    </div>
+    <div class="finale-icons">💖 💍 💖</div>
+    <div class="sign-block">
+      <div class="sign-from">Forever yours</div>
+      <div class="sign-name">Your Love 💕</div>
+    </div>
+    <div>
+      <div class="seal">
+        <span class="seal-txt">11 · 04 · 2025</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end scroll-wrap -->
+
+<script>
+/* ===== STAR FIELD ===== */
+const sfEl=document.getElementById('starField');
+for(let i=0;i<160;i++){
+  const s=document.createElement('div');s.className='sf';
+  const sz=Math.random()*2.2+0.4;
+  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--sfd:${2+Math.random()*5}s;--sfdl:${Math.random()*5}s;`;
+  sfEl.appendChild(s);
+}
+
+/* ===== GLOBAL PETALS ===== */
+const gpEl=document.getElementById('gPetals');
+const petalSet=['🌹','🌸','🌺','🌸','🌹','🌸','🌹'];
+for(let i=0;i<28;i++){
+  const p=document.createElement('div');p.className='gp';
+  p.textContent=petalSet[i%petalSet.length];
+  p.style.cssText=`left:${Math.random()*100}%;font-size:${12+Math.random()*14}px;--gpd:${8+Math.random()*10}s;--gps:${Math.random()*10}s;--gpx:${(Math.random()-0.5)*160}px;--gpr:${360+Math.random()*360}deg;`;
+  gpEl.appendChild(p);
+}
+
+/* ===== ROSE ARCH ===== */
+const raEl=document.getElementById('roseArch');
+const roseArr=['🌹','🌸','🌺','🌹','🌺','🌸','🌹','🌸','🌹'];
+roseArr.forEach((r,i)=>{
+  const el=document.createElement('div');el.className='ra';
+  el.textContent=r;
+  const sz=26+Math.random()*22;
+  el.style.cssText=`--raf:${sz}px;--rasd:${3+Math.random()*3}s;--rasdl:${Math.random()*2}s;`;
+  raEl.appendChild(el);
+});
+
+/* ===== RING SPARKLES ===== */
+const rsEl=document.getElementById('ringSparkles');
+const spkArr=['✨','💫','⭐','🌟','✦'];
+for(let i=0;i<12;i++){
+  const sp=document.createElement('div');sp.className='rsk';
+  sp.textContent=spkArr[i%spkArr.length];
+  const ang=i/12*360, r=48+Math.random()*28, rad=ang*Math.PI/180;
+  sp.style.cssText=`top:50%;left:50%;font-size:${10+Math.random()*10}px;--rsx:${Math.cos(rad)*r}px;--rsy:${Math.sin(rad)*r}px;--rsx2:${Math.cos(rad)*(r+28)}px;--rsy2:${Math.sin(rad)*(r+28)}px;--rst:${1.4+Math.random()*1.2}s;--rsd:${Math.random()*2.5}s;`;
+  rsEl.appendChild(sp);
+}
+
+/* ===== FINALE HEARTS ===== */
+const fhEl=document.getElementById('finaleHearts');
+const heartSet=['💖','💕','💗','💓','❤️','🌹','💍'];
+for(let i=0;i<24;i++){
+  const h=document.createElement('div');h.className='fhb';
+  h.textContent=heartSet[Math.floor(Math.random()*heartSet.length)];
+  const sz=14+Math.random()*18;
+  h.style.cssText=`left:${4+Math.random()*92}%;bottom:${4+Math.random()*60}%;--fhbsz:${sz}px;--fhbd:${3+Math.random()*4}s;--fhbs:${Math.random()*5}s;--fhby:-${80+Math.random()*220}px;--fhbx:${(Math.random()-0.5)*90}px;`;
+  fhEl.appendChild(h);
+}
+
+/* ===== NAV DOTS ===== */
+const sections=['sec0','sec1','sec2','sec3','sec4','sec5'];
+const ndEl=document.getElementById('navDots');
+const dots=[];
+sections.forEach((id,i)=>{
+  const btn=document.createElement('button');
+  btn.className='nd'+(i===0?' on':'');
+  btn.title=`Section ${i+1}`;
+  btn.onclick=()=>document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  ndEl.appendChild(btn);
+  dots.push(btn);
+});
+
+/* ===== INTERSECTION OBSERVER — reveal + dots ===== */
+const revealEls=document.querySelectorAll('.reveal');
+const secEls=sections.map(id=>document.getElementById(id));
+
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.15});
+revealEls.forEach(el=>revObs.observe(el));
+
+const secObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx=secEls.indexOf(e.target);
+      dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+    }
+  });
+},{threshold:0.4});
+secEls.forEach(el=>secObs.observe(el));
+</script>
+</body>
+</html>
